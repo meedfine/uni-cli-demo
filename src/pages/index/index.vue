@@ -1,21 +1,33 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view>
-			<text class="title">{{title}}</text>
-		</view>
+	<view>
+		<clHeader :singleBtn="true" fixed v-bind:choseType.sync="tripTypeSel" v-bind:isActive="storeData.tripType" v-if="isShowHead">
+		</clHeader>
 	</view>
 </template>
 
 <script>
+	import moment from "moment"
+	import clHeader from "../../components/clUI/clHeader.vue"
+	import {
+		getUserInfo,
+		queryFlight
+	} from "../../utils/index.js"
 	export default {
+		components: {
+			clHeader
+		},
 		data() {
 			return {
-				title: 'Hello'
+				storeData: this.$store.state.common,
+				href: 'https://uniapp.dcloud.io/component/README?id=uniui',
+				tripTypeSel: "2",
+				isShowHead: true
 			}
 		},
 		onLoad() {
-
+			getUserInfo();
+			queryFlight();
+			console.log(moment("2020-04-20").format("MM月DD日"));
 		},
 		methods: {
 
@@ -24,19 +36,9 @@
 </script>
 
 <style>
-	.content {
-		text-align: center;
-		height: 400upx;
-	}
-
-	.logo {
-		height: 200upx;
-		width: 200upx;
-		margin-top: 200upx;
-	}
-
-	.title {
-		font-size: 36upx;
-		color: #8f8f94;
+	.container {
+		padding: 20px;
+		font-size: 14px;
+		line-height: 24px;
 	}
 </style>
