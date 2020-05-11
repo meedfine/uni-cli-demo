@@ -1,5 +1,7 @@
 <script>
+import pageAnimation from './plugins/Michael-pageAnimationPlus/index'
 	export default {
+		mixins: [pageAnimation],
 		onLaunch: function() {
 			console.log('App Launch')
 		},
@@ -11,8 +13,10 @@
 		}
 	}
 </script>
-
 <style lang="scss">
 	/* 注意要写在第一行，同时给style标签加入lang="scss"属性 */
 	@import "uview-ui/index.scss";
+	page{
+		background-color: #000 !important;
+	}
 </style>

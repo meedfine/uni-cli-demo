@@ -1,21 +1,23 @@
 <template>
-	<view>
+	<view class="content">
 		<clHeader :singleBtn="true" fixed v-bind:choseType.sync="tripTypeSel" v-bind:isActive="storeData.tripType" v-if="isShowHead">
 		</clHeader>
+		<u-button class="cusBtn" type="success" @click="goPage('pages/test/test1')">页面1</u-button>
+		<u-button class="cusBtn" type="success" @click="goPage('pages/test/test2')">页面2</u-button>
+		<!-- <navigator class="cusLink" url="/pages/test/test1"><u-button class="cusBtn" type="success">页面1</u-button></navigator>
+		<navigator class="cusLink" url="/pages/test/test2"><u-button class="cusBtn" type="success">页面2</u-button></navigator> -->
+		<u-button class="cusBtn" type="success">成功按钮</u-button>
+		<span class="iconfont icon-yiwentishixinxi" style="color: red"></span>
 	</view>
 </template>
 
 <script>
-	import moment from "moment"
-	import clHeader from "../../components/clUI/clHeader.vue"
+	import moment from "moment";
 	import {
 		getUserInfo,
 		queryFlight
 	} from "../../utils/index.js"
 	export default {
-		components: {
-			clHeader
-		},
 		data() {
 			return {
 				storeData: this.$store.state.common,
@@ -25,20 +27,43 @@
 			}
 		},
 		onLoad() {
-			getUserInfo();
-			queryFlight();
+			// getUserInfo();
+			// queryFlight();
 			console.log(moment("2020-04-20").format("MM月DD日"));
 		},
 		methods: {
-
+			goPage(path){
+				console.log(path);
+				this.$u.route(path)
+			}
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.container {
 		padding: 20px;
 		font-size: 14px;
 		line-height: 24px;
+	}
+	.cusLink{
+		display: inline-block;
+		margin: 4px 6px;
+		
+	}
+	.cusBtn{
+		display: inline-block;
+			height: 36px;
+			line-height: 36px;
+			width: 100px;
+			font-size: 14px;
+		}
+.content{
+	min-height: 500px;
+	background-color: green;;
+}
+page{
+		// padding: 15px;
+		background-color: #000 !important;
 	}
 </style>

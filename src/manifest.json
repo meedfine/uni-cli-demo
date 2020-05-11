@@ -67,7 +67,8 @@
         "usingComponents" : true
     },
     "mp-toutiao" : {
-        "usingComponents" : true
+		"usingComponents" : true,
+		"appid": "cli_9e20c41ad03e900d"
     },
     "mp-qq" : {
         "usingComponents" : true

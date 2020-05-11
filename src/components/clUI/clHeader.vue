@@ -1,16 +1,12 @@
 <template>
 	<view>
-	      <view class="status_bar">
-	          <!-- 这里是状态栏 -->
-	      </view>
+	    <!-- <view class="status_bar"></view> -->
 
   <header class="mint-header" :class="[{ 'fixed-block': fixed, 'singleBtn':singleBtn }]">
     <div class="mint-header-button is-left">
       <slot name="left">
         <a href="javascript:void(0)" slot="left">
-          <!-- <mt-button icon="back" @click="back" class="homeBack oldBackBtn">
-          </mt-button> -->
-          <span @click="back" class="homeBack newBackBtn"></span>
+            <span @click="back" class="iconfont icon-yiwentishixinxi" style="font-size:24px"></span>
         </a>
       </slot>
 
@@ -65,10 +61,13 @@ export default {
     },
     methods: {
         back: function() {
-             isBackTra=true;
             if (this.meBack) {
                 this.meBack()
             } else {
+                uni.navigateBack({
+    delta: 1
+});
+                // this.$u.route({type:"navigateBack",delta:1})
                 // $('html').removeClass('fixedScroll')
                 // window.history.go(-1)
             }
