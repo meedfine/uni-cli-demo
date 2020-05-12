@@ -4,7 +4,7 @@ import store from './store'
 import uView from "uview-ui";
 import "./assets/css/mintui.css"
 import "./assets/iconfont/iconfont.css"
-import clHeader from './components/clUI/clHeader.vue';
+import clHeader from './components/clHeader.vue';
 
 // import Router, {RouterMount} from 'uni-simple-router';
 // Vue.use(Router)

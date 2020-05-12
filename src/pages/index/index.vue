@@ -8,10 +8,13 @@
 		<navigator class="cusLink" url="/pages/test/test2"><u-button class="cusBtn" type="success">页面2</u-button></navigator> -->
 		<u-button class="cusBtn" type="success">成功按钮</u-button>
 		<span class="iconfont icon-yiwentishixinxi" style="color: red"></span>
+		<calendar :chooseDay="day" @changeFirstDay="changeFirstDay" style="width:100%">
+		</calendar>
 	</view>
 </template>
 
 <script>
+	import calendar from '../../components/calendar';
 	import moment from "moment";
 	import {
 		getUserInfo,
@@ -23,8 +26,12 @@
 				storeData: this.$store.state.common,
 				href: 'https://uniapp.dcloud.io/component/README?id=uniui',
 				tripTypeSel: "2",
-				isShowHead: true
+				isShowHead: true,
+				day: [2020,5,13]
 			}
+		},
+		components: {
+			calendar
 		},
 		onLoad() {
 			// getUserInfo();
@@ -35,6 +42,10 @@
 			goPage(path){
 				console.log(path);
 				this.$u.route(path)
+			},
+			changeFirstDay(arg){
+				console.log(arg);
+				this.day= arg;
 			}
 		}
 	}
@@ -59,11 +70,9 @@
 			font-size: 14px;
 		}
 .content{
-	min-height: 500px;
-	background-color: green;;
+	height: 100%;
 }
 page{
-		// padding: 15px;
-		background-color: #000 !important;
+		height: 100%;
 	}
 </style>
